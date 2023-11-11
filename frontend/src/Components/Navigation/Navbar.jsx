@@ -77,10 +77,14 @@ function NavBar(props) {
       <IconButton
         color='inherit'
         aria-label='open-drawer'
-        edge='center'
-        onClick={toggleDrawer}>
-        <SortIcon />
-      </IconButton>
+        onClick={toggleDrawer}
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: '50%',
+          transform: 'translateX(-50%)',}}>
+        <img src={Logo} alt="Logo" style={{ height: '40px' }} />
+      </IconButton>  
       <Box>
           <Drawer
             anchor='right'
@@ -91,7 +95,7 @@ function NavBar(props) {
             sx={{
               "& .MuiDrawer-paper": {
                 overflow: "hidden",
-                backgroundColor: (theme) => theme.palette.primary.main,
+                backgroundColor: theme.palette.primary.main,
                 boxSizing: "border-box",
                 width: "100%",
                 display: "flex",
@@ -109,35 +113,37 @@ function NavBar(props) {
   const remNavLinks = navLinks.slice(3)
   const renderLargeScreenNavbar = () => (
     <>
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
         <Box>
           {initNavLinks.map((link) => (
             <LinkBtn
-                  color='inherit'
-                  key={link.title}
-                  component={HashLink}
-                  smooth
-                  to={link.path}>
-                  {link.title}
-                </LinkBtn>
+              color='inherit'
+              key={link.title}
+              component={HashLink}
+              smooth
+              to={link.path}>
+              {link.title}
+            </LinkBtn>
           ))}
         </Box>
         <Link
               component={HashLink}
               smooth='true'
               to='/#Home'>
-              <img src={Logo} alt="Logo" style={{ height: '75px', padding: '0 2rem' }} />
+              <img src={Logo} alt="Logo" style={{ height: '75px' }} />
         </Link>
-        {remNavLinks.map((link) => (
+        <Box>
+          {remNavLinks.map((link) => (
             <LinkBtn
-                  color='inherit'
-                  key={link.title}
-                  component={HashLink}
-                  smooth
-                  to={link.path}>
-                  {link.title}
-                </LinkBtn>
+              color='inherit'
+              key={link.title}
+              component={HashLink}
+              smooth
+              to={link.path}>
+              {link.title}
+            </LinkBtn>
           ))}
+        </Box>
       </Box>
     </>
   )
