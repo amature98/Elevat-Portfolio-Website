@@ -1,7 +1,5 @@
 # Elevat Portfolio Website
 
-# Portfolio Website - MERN Stack
-
 Welcome to this Portfolio Website project repository. This project aims to create a responsive and dynamic website for an organisation to showcase its mission, projects, and impact.
 
 ## Project Overview
