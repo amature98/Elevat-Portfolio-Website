@@ -16,13 +16,14 @@ const navLinks = [
     path: "/#Work",
   },
   {
+    title: 'Blogs',
+    path: '/blogs'
+  },
+  {
     title: "Contacts",
     path: "/#Contacts",
   },
-  {
-    title: 'Blogs',
-    path: '/blogs'
-  }
+  
 ];
 
 export default navLinks
