@@ -83,7 +83,7 @@ function NavBar(props) {
           top: 0,
           left: '50%',
           transform: 'translateX(-50%)',}}>
-        <img src={Logo} alt="Logo" style={{ height: '40px' }} />
+        <img src={Logo} alt="Logo" style={{ height: '60px' }} />
       </IconButton>  
       <Box>
           <Drawer
