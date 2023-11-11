@@ -90,7 +90,7 @@ const typography = {
     },
     button: {
         fontFamily: SECONDARY_FONT,
-        fontWeight: fontWeightThin,
+        fontWeight: fontWeightBold,
         fontSize: responsiveFontSize(2),
         textTransform: 'uppercase',
         ...responsiveFontSizes({sm: 2.0, md: 1.75, lg: 1.4})
