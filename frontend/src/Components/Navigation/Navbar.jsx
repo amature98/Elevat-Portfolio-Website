@@ -1,4 +1,4 @@
-import React, { cloneElement, useState } from "react";
+import React, { cloneElement, useState, useEffect } from "react";
 import { HashLink } from "react-router-hash-link";
 import PropTypes from "prop-types";
 import {
@@ -14,7 +14,7 @@ import {
   useMediaQuery
 } from "@mui/material";
 import { alpha, styled, useTheme } from "@mui/material/styles";
-import SortIcon from "@mui/icons-material/Sort";
+import gsap from 'gsap'
 import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
 import Logo from '../../assets/main_logo.png'
@@ -54,9 +54,26 @@ function NavBar(props) {
   const theme = useTheme()
   // Defining the media queries
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
+  useEffect(() => {
+  // GSAP animation for rotating the logo
+  gsap.from('.rotate-logo', {
+    duration: 2, // animation duration in seconds
+    rotation: 180, // rotate 180 degrees
+    ease: 'power2.out', // easing function
+  });
+    // GSAP animation for fading in the nav links
+  gsap.from('.fade-in', {
+    duration: 2, // animation duration in seconds
+    opacity: 0, // start with opacity 0
+    ease: 'power2.out', // easing function
+    stagger: 0.2, // stagger the animation for each nav link
+  });
+}, []); // empty dependency array means the effect runs once after the initial render
+
   // Defining the drawer component
   const drawer = (
-    <Box onClick={toggleDrawer} sx={{
+    <Box onClick={toggleDrawer}
+      sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -83,7 +100,7 @@ function NavBar(props) {
           top: 0,
           left: '50%',
           transform: 'translateX(-50%)',}}>
-        <img src={Logo} alt="Logo" style={{ height: '60px' }} />
+        <img src={Logo} alt="Logo" className="rotate-logo" style={{ height: '60px' }} />
       </IconButton>  
       <Box>
           <Drawer
@@ -121,8 +138,10 @@ function NavBar(props) {
               key={link.title}
               component={HashLink}
               smooth
-              to={link.path}>
+              to={link.path}
+              className='fade-in'>
               {link.title}
+              
             </LinkBtn>
           ))}
         </Box>
@@ -130,7 +149,7 @@ function NavBar(props) {
               component={HashLink}
               smooth='true'
               to='/#Home'>
-              <img src={Logo} alt="Logo" style={{ height: '75px' }} />
+              <img src={Logo} alt="Logo" className="rotate-logo" style={{ height: '75px' }} />
         </Link>
         <Box>
           {remNavLinks.map((link) => (
@@ -139,7 +158,8 @@ function NavBar(props) {
               key={link.title}
               component={HashLink}
               smooth
-              to={link.path}>
+              to={link.path}
+              className='fade-in'>
               {link.title}
             </LinkBtn>
           ))}
